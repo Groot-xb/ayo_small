@@ -1,0 +1,4 @@
+*.safetensors
+*.model
+*.model.v3
+

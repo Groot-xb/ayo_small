@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  ayo_small_container:
+    container_name: ayo_small_container
+
+    # 📦 Construction de l’image Docker à partir du Dockerfile dans le dossier actuel
+    build:
+      context: .
+
+    # 🌐 Exposition du port local utilisé par le serveur Flask de main.py
+    ports:
+      - "5678:5678"
+
+    # 📁 Volumes montés entre Windows (réel) et Docker (virtuel)
+    # Ces dossiers doivent déjà exister sur ton disque D:
+    volumes:
+      - D:/models_core/mistral7b_ayo_small:/app                # Code source principal (main.py, Dockerfile, etc.)
+      - D:/models_core:/models_core                            # Modèles Mistral, checkpoints, archives
+      - D:/config_core:/configs_core                           # Fichiers JSON de configuration globale
+      - D:/logs_core:/logs_core                                # Logs des sessions AyO (journalisation locale)
+      - D:/06_results:/results_core                            # Résultats générés ou exportés
+      - D:/memory_core:/memory_core                            # UID, rôles, statuts, historique de session
+      - D:/01_data_raw:/raw_data                               # Données brutes d’entrée (ex : audio/image non traitée)
+      - D:/02_data_proc:/proc_data                             # Données traitées, enrichies ou anonymisées
+      - D:/docker_core/n8n_data:/n8n_data                      # N8N local (workflows, événements, logs)
+
+    # 🔧 Variables d’environnement accessibles dans main.py
+    environment:
+      - PORT=5678                        # Port utilisé par Flask
+      - APP_MODE=local                  # Mode d'exécution de l'agent
+      - AYO_MODEL_PATH=/app             # Chemin du code opérationnel dans le conteneur
+      - N8N_PATH=/n8n_data              # Données N8N (workflows, logs, DB locale)
+      - STATIC_PATH=/www                # Répertoire statique (réservé)
+      - CONFIG_PATH=/configs_core       # Configurations de génération, tokens, etc.
+      - LOG_PATH=/logs_core             # Accès aux logs globaux
+      - RESULT_PATH=/results_core       # Fichiers de sortie et exports
+      - RAW_PATH=/raw_data              # Données entrantes brutes
+      - PROC_PATH=/proc_data            # Données traitées / nettoyées
+      - MODEL_ARCHIVE=/models_core      # Modèles Mistral, Ollama, etc.
+      - MEMORY_PATH=/memory_core        # UID, rôle, mémoire active
+

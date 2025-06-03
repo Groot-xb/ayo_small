@@ -1,0 +1,9 @@
+# Ne pas suivre l’agent et les modèles lourds
+*.safetensors
+*.pt
+*.whl
+.packettracer
+*.log
+*.tmp
+__pycache__/
+.env

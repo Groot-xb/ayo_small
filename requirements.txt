@@ -1,0 +1,27 @@
+# Serveur local pour l’interface Flask (main.py)
+flask
+
+# Modèle Mistral 7B et API HuggingFace
+transformers>=4.31.0
+
+# Chargement sécurisé des poids .safetensors
+safetensors
+
+# Backend nécessaire au modèle (PyTorch)
+torch
+
+# Tokenizer utilisé pour Mistral (format .model ou .json)
+sentencepiece
+
+# Accélération de l’inférence, recommandé pour HF >= 4.30
+accelerate
+
+# Serveur rapide, utilisé dans extensions futures (FastAPI, n8n)
+uvicorn
+
+# Appels HTTP
+requests
+
+# parsing JSON et config .env (utile pour UID sécurisé)
+pydantic
+python-dotenv
