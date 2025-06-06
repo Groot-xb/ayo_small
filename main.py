@@ -105,12 +105,12 @@ def etat_synthese():
     print(f"\n[🔎 ÉTAT] UID={UID} — STATUT={statut_utilisateur} — DEFCON={defcon_status}\n")
 
 # === SECTION 4 — INTERACTION INITIALE ===
-print("AyO Small est prêt. Activer maintenant ? (oui/non)")
-reponse = input(">>> ").strip().lower()
-if reponse != "oui":
-    print("Arrêt d’AyO Small. Activation annulée.")
-    session_active = False
-    exit()
+print("AyO Small est prêt. Activation automatique (mode Docker).")
+reponse = "oui"
+
+# ⚠️ Lance le serveur Flask automatiquement (pas de condition)
+Thread(target=start_server, daemon=True).start()
+
 
 # ⚠️ Lance le serveur Flask uniquement après confirmation
 Thread(target=start_server, daemon=True).start()

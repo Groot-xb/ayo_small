@@ -83,6 +83,20 @@ Le dossier `D:/AYO_CORE/models_core/mistral7b_ayo_small` contient le **noyau de 
 
 ---
 
+
+## 🤖 Extension future : Coordination entre agents LLM
+
+AyO_Small est conçu pour évoluer vers une coordination d’agents spécialisés :
+
+- Claude 4 (analyse humaine / morale)
+- Mistral (décision locale)
+- NéMo (interprétation logique)
+- GPT-4o ou Codex (interfaces, structuration)
+
+Les connexions sont prévues dans les Workflows avancés (20.0 → 30.0), et pilotées par l’interface n8n. Cette configuration vise une interaction humaine éthique, et une transparence absolue sur les décisions multi-agents.
+
+---
+
 ## 🧰 Workflows AyO Small (0 → 30)
 
 | Bloc | Fonction principale                            |
