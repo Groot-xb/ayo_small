@@ -15,9 +15,6 @@ def status():
 def start_server():
     app.run(host="0.0.0.0", port=5678)
 
-# === SECTION 1 — INITIALISATION ===
-Thread(target=start_server, daemon=True).start()
-
 UID = "AUCUN"
 statut_utilisateur = "inconnu"
 autorisation_aaron = {}
@@ -107,10 +104,6 @@ def etat_synthese():
 # === SECTION 4 — INTERACTION INITIALE ===
 print("AyO Small est prêt. Activation automatique (mode Docker).")
 reponse = "oui"
-
-# ⚠️ Lance le serveur Flask automatiquement (pas de condition)
-Thread(target=start_server, daemon=True).start()
-
 
 # ⚠️ Lance le serveur Flask uniquement après confirmation
 Thread(target=start_server, daemon=True).start()
